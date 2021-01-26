@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(){
 
+  palavra = 'palavra';
+  corfavorita = 'verde';
+  titulo = 'Seja bem vindo!';
+
+  constructor(){
+    
   }
 }

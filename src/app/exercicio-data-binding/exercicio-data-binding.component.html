@@ -1,13 +1,45 @@
-<h2> palavra: {{palavra}} </h2>
-<h2>cor: {{color}} </h2>
+<!--Exercício contador -->
+
+<app-exercicio-contador 
+    [valor] = "10">
+    (valorMudou)="onValorAtualizadoNoContador($event)">
+</app-exercicio-contador>
+
+<hr>
+
+<!--Exemplos de Event binding -->
+
+<button (click)="onClickBotaoEmissor($event)">
+    Emitir informação de clique.
+</button><br>
+
+<button
+    (click) = "onClick($event)"
+    (mouseenter)="passouMouse()">
+    Clique em mim!
+</button><br>
+
+<input type="text"
+[value]="valorDoInput"
+(keyup)="digitouAlgo($event)"><br>
+
+valor do input: {{valorDoInput}}
+
+<hr>
+
+<!--Exemplos de Property binding -->
+
+<p> palavra: {{palavra}} </p>
+<p> cor: {{color}} </p>
+
 <input type="text" [value]="initialValue">
-<br>
+
 <button [disabled]="isDisabled" >clique aqui!</button>
-<br>
+
 <p [attr.aria-label]="isDisabled ? 'Botão Desabilitado' : accessibiityText">
     um texto qualquer...
-</p>
-<br>
+</p><br>
+
 <img [src]="imageUrl">
 
 

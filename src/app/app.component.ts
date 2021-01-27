@@ -5,13 +5,18 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
 
   palavra = 'palavra';
   corfavorita = 'verde';
   titulo = 'Seja bem vindo!';
 
-  constructor(){
-    
+  constructor(){  }
+
+  eventoRecebido($event:any){
+    console.log('appComponente: evento recebido!', $event);
   }
+  
+
 }

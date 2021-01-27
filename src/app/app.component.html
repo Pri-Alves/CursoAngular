@@ -1,3 +1,11 @@
-<app-header [titulo] = "titulo"> </app-header>
-<app-exercicio-data-binding [palavra] = "palavra" [color] = "corfavorita" ></app-exercicio-data-binding>
+<app-header 
+    [titulo] = "titulo"> 
+</app-header>
+
+<app-exercicio-data-binding 
+    [palavra] = "palavra" 
+    [color] = "corfavorita"
+    (clicado) = 'eventoRecebido' >
+</app-exercicio-data-binding>
+
 <app-footer> </app-footer>

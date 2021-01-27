@@ -1,14 +1,21 @@
 import { Component } from '@angular/core';
 
-@Component({
+import { MEMES_AGRUPADOS_POR_CATEGORIA } from './exercicio-diretivas.constantes';
+
+  @Component({
   selector: 'app-exercicio-diretivas',
   templateUrl: './exercicio-diretivas.component.html',
   styleUrls: ['./exercicio-diretivas.component.scss']
 })
+
 export class ExercicioDiretivasComponent {
 
  deveExibir=true;
  
+ PREFIXO_IMAGEM_URL = 'https://raw.githubusercontent.com/vitorfgsantos/angular-memes-diretivas/master/images'
+ MEMES_AGRUPADOS_POR_CATEGORIA = MEMES_AGRUPADOS_POR_CATEGORIA;
+  
+
  listaFrutas = [
    'macã',
    'laranja',
@@ -29,7 +36,7 @@ export class ExercicioDiretivasComponent {
   placa: 'jld-7411',
   cor: 'branco',
 },];
-
+  
  trocarValor() {
    this.deveExibir = !this.deveExibir;
  }

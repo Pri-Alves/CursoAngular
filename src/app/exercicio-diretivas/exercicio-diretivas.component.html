@@ -1,3 +1,18 @@
+<h2> RESOLVENDO EXERCICIO  </h2>
+
+
+<ul>
+    <li *ngFor='let memeCategoria of MEMES_AGRUPADOS_POR_CATEGORIA'>
+        <H2>{{ memeCategoria.categoria}}</H2>
+    
+        <div *ngFor='let meme of memeCategoria.memes; let par = even'>
+            <img [src]="PREFIXO_IMAGEM_URL + meme.imagemURL" *ngIf='par; else blocoPar'>
+            <ng-template #blocoPar>
+                <h2> PAR </h2>
+            </ng-template>
+        </div>
+    </li>
+</ul>
 
 <!--Exemplos ngIf-->
 

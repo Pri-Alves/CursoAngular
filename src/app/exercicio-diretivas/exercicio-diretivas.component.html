@@ -1,0 +1,40 @@
+
+<!--Exemplos ngIf-->
+
+<p> Valor atual do deveExibir {{deveExibir}} </p>
+
+<button (click)="trocarValor()"> Trocar valor </button>
+
+<div *ngIf="deveExibir; else elseBlock">
+     Olá, estou dentro do ngIf 
+</div>
+
+<ng-template #elseBlock>
+    vou ser exibido quando deveExibir for false
+</ng-template>
+
+<div *ngIf="soma(5,9) > 10">
+    Exibe baseado na soma
+</div>
+
+<ng-template [ngIf]="deveExibir">
+    <div>Content to render when condition istrue.
+</div></ng-template>
+
+<div *ngIf="deveExibir; then thenBlock else elseBlock2"></div>
+<ng-template #thenBlock>Bloco True do NG-Template</ng-template>
+<ng-template #elseBlock2>Bloco False do NG-Template</ng-template>
+
+<hr>
+
+<!--Exemplos ngFor-->
+
+<ul>
+    <li *ngFor='let fruta of listaFrutas'> {{ fruta }} </li>
+</ul>
+
+<ul>
+    <li *ngFor='let carro of carrosLista; let index = index; first as primeiro; last as ultimo'>
+       {{ primeiro }} - {{ index + 1 }} {{ carro.placa }} - {{ carro.cor }} - {{ ultimo }}
+    </li>
+</ul>

@@ -17,6 +17,7 @@ export class ExercicioDataBindingComponent implements OnInit {
   @Output() clicado = new EventEmitter
   
   valorDoInput = '';
+  valorContador = 10;
   
   constructor() {    
     setTimeout(() => {
@@ -48,9 +49,6 @@ export class ExercicioDataBindingComponent implements OnInit {
     this.clicado.emit($event);
   }
 
-  onValorAtualizadoNoContador(novoValor:any){
-    console.log('onValorAtualizadoNoContador', novoValor)
-  }
 }
 
 

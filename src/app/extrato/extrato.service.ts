@@ -15,13 +15,17 @@ export class ExtratoService {
     private http: HttpClient,
   ) {}
 
-  getTransacoes() {
+  getTransacoes(page: number) {
     //simulando erro
     // const error = throwError('erro genérico');
     // return timer(3000)
     // .pipe(
     //   mergeMap(()=> error)
     // );
-    return this.http.get<Transacao[]>(this.API_URL + '/transacoes');
+    return this.http.get<Transacao[]>(this.API_URL + '/transacoes', { 
+     params: {
+       _page: String(page),
+     }
+    });
   }
 }

@@ -13,6 +13,7 @@ import { ExtratoService } from './extrato.service';
 export class ExtratoComponent implements OnInit {
 
   transacoes: Transacao[] = [];
+  pagina = 1;
 
   estaCarregando: boolean = false;
   erroNoCarregamento: boolean = false;
@@ -29,7 +30,7 @@ export class ExtratoComponent implements OnInit {
   this.estaCarregando = true;
   this.erroNoCarregamento = false;
   
-  this.extratoService.getTransacoes()
+  this.extratoService.getTransacoes(this.pagina)
   .pipe(
     take(1),
     finalize(() => this.estaCarregando = false)
@@ -47,5 +48,15 @@ export class ExtratoComponent implements OnInit {
   onError(error:any){
     this.erroNoCarregamento = true;
     console.error(error);
+  }
+
+  proximaPagina(){
+    this.pagina = this.pagina + 1;
+    this.carregarExtrato()
+  }
+  
+  paginaAnterior(){
+    this.pagina = this.pagina - 1;
+    this.carregarExtrato()
   }
 }

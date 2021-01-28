@@ -1,4 +1,5 @@
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +13,7 @@ import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.componen
 import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localePt, 'pt')
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,7 @@ registerLocaleData(localePt, 'pt')
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    HttpClientModule,
   ],
   providers: [{
     provide: LOCALE_ID,

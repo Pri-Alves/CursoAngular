@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,26 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  showHeader = true;
   palavra = 'palavra';
   corfavorita = 'verde';
   titulo = 'Seja bem vindo!';
 
   constructor(){  }
-  
-  ngOnInit() {
-    setTimeout(() => {
-      this.titulo = 'outra coisa';
-    
-      setTimeout(() => {
-        this.showHeader = false;
-      }, 3000)
-    
-    }, 3000)
-  }
-  
+
   eventoRecebido($event:any){
     console.log('appComponente: evento recebido!', $event);
   }

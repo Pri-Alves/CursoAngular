@@ -1,0 +1,22 @@
+<h1> Exercício de Pipes </h1>
+
+<ul>
+    <li *ngFor='let compras of compras'>
+        <p>Produto: {{compras.produto  | uppercase}}</p>
+        <p>Valor: {{compras.valor | currency:'BRL'}}</p>
+        <p>Quantidade: {{compras.quantidade | number:'1.0-0'}}</p>
+        <p>Peso: {{ getPesoFormatado(compras.peso) }} </p>
+        <p>Data: {{compras.data | date:'EEEE, dd \'de\' MMMM \'de\' yyyy, \'ás\' HH:mm'}}</p>  
+        <hr>
+    </li>
+</ul>
+
+
+<hr>
+
+<h1> Exemplos de Pipes </h1>
+
+<p> Titulo: {{ filme.titulo | uppercase }}  </p>
+<p> Avaliação: {{ filme.estrelas | number:'1.1-2' }}</p>
+<p> Preço do aluguel: {{ filme.precoAluguel | currency:'BRL'}}</p>
+<p> Data de Lançamento: {{ filme.dataLancamento | date:'short'}}</p>

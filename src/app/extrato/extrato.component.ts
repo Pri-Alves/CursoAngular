@@ -13,14 +13,31 @@ export class ExtratoComponent implements OnInit {
 
   transacoes: Transacao[] = [];
 
+  estaCarregando: boolean = false;
+  erroNoCarregamento: boolean = false;
+
   constructor(
-    private extratoService:ExtratoService
+    private extratoService: ExtratoService
     ) { }
 
-  ngOnInit() {
-    this.extratoService.getTransacoes()
-      .subscribe(response => {
-        this.transacoes = response;
-      });
-  }
+  ngOnInit() { 
+    this.carregarExtrato();
+   }
+
+  carregarExtrato() {
+  this.estaCarregando = true;
+  this.erroNoCarregamento = false;
+  
+  this.extratoService.getTransacoes()
+    .subscribe(
+      response => {
+      this.estaCarregando = false;
+      this.transacoes = response;
+    }, error => {
+      this.estaCarregando = false;
+      this.erroNoCarregamento = true;
+      //fazer alguma coisa se der erro
+    });
+}
+
 }

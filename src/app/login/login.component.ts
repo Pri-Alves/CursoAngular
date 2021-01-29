@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  
+  email!: string;
+  password!: string;
+
 
   constructor() { }
 
@@ -13,7 +17,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    console.log(form)
+    console.log(form.value);
+    console.log('email', this.email);
+    console.log('password:', this.password);
   }
 
 }

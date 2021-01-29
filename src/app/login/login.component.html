@@ -1,13 +1,14 @@
 <div class="text-center"> 
 
+    
     <form #form='ngForm' (ngSubmit)="onSubmit(form)" class="form-signin pt-5">
 
         <div class="p-2">
-            <input type="email" class="form-control" placeholder="Email" name="email" ngModel>
+            <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]='email'>
         </div>
 
         <div class="p-2">
-            <input type="password" class="form-control" placeholder="Password" name="password" ngModel>
+            <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]='password'>
         </div>
 
         <div class="p-2">

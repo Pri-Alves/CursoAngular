@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 
 import { LoginService } from './login.service';
@@ -13,6 +14,7 @@ export class LoginComponent {
 
   constructor(
     private loginService: LoginService,
+    private router: Router,
   ){ }
 
   @ViewChild('emailInput')
@@ -55,14 +57,17 @@ export class LoginComponent {
     .pipe(finalize(() => this.estaCarregando = false)
     )
     .subscribe(
-      _response => {
-        console.log('Sucesso! Logou');
-      },
-      _error => {
-        this.erroNoLogin = true;
-        console.log('Deu Erro! Não logou!');
-      }
+      _response => this.onSuccessLogin(),
+      _error => this.onErrorLogin(),
     );
+  }
+
+  onSuccessLogin(){
+    this.router.navigate(['home']);
+  }
+
+  onErrorLogin(){
+    this.erroNoLogin = true;
   }
 
   exibeErro(nomeControle: string, form: NgForm){

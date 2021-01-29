@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +38,7 @@ export class LoginComponent {
     console.log('password:', this.password);
   }
 
-  exibeErro(nomeControle: string, form: any){ //incluir FormGroup
+  exibeErro(nomeControle: string, form: NgForm){
     if (!form.controls[nomeControle]) {
       console.log("Teste")
       return false;

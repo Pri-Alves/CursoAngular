@@ -1,5 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
+
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +10,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+
+  constructor(
+    private loginService: LoginService,
+  ){ }
 
   @ViewChild('emailInput')
   emailInput!: ElementRef;
@@ -16,8 +23,12 @@ export class LoginComponent {
 
   email!: string;
   password!: string;
+  estaCarregando: boolean = false;
+  erroNoLogin: boolean = false;
 
   onSubmit(form: any) {
+    this.erroNoLogin = false;
+    
     if (!form.valid) {
       form.controls.email.markAsTouched();
       form.controls.password.markAsTouched();
@@ -33,14 +44,29 @@ export class LoginComponent {
       }
       return;
     }
+    this.login();
+    //console.log('email', this.email);
+    //console.log('password:', this.password);
+  }
 
-    console.log('email', this.email);
-    console.log('password:', this.password);
+  login() {
+    this.estaCarregando = true;
+    this.loginService.logar(this.email, this.password)
+    .pipe(finalize(() => this.estaCarregando = false)
+    )
+    .subscribe(
+      _response => {
+        console.log('Sucesso! Logou');
+      },
+      _error => {
+        this.erroNoLogin = true;
+        console.log('Deu Erro! Não logou!');
+      }
+    );
   }
 
   exibeErro(nomeControle: string, form: NgForm){
     if (!form.controls[nomeControle]) {
-      console.log("Teste")
       return false;
     }
     return form.controls[nomeControle].invalid && form.controls[nomeControle].touched

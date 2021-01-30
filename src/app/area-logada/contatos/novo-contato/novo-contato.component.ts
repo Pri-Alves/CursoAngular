@@ -27,8 +27,26 @@ export class NovoContatoComponent implements OnInit {
     })
   }
 
+  exibeErro(nomeControle: string){
+    if (this.contatoForm.controls[nomeControle]) {
+      return false;
+    }
+    return this.contatoForm.controls[nomeControle].invalid && this.contatoForm.controls[nomeControle].touched
+  }
+
+  validadeAllFormFields(){
+    Object.keys(this.contatoForm.controls).forEach(field => {
+      const control = this.contatoForm.get(field);
+      control?.markAsTouched();
+    });
+  }
+
   salvarContato(){
-    console.log(this.contatoForm)
+    if (this.contatoForm.invalid) {
+      this.validadeAllFormFields();
+      return;
+    }
+    console.log(this.contatoForm);
   }
 
 }

@@ -4,6 +4,8 @@
         <span class="sr-only">Loading...</span>
     </div>
 
+    <button class="btn btn-primary m-1" (click)="novoContato()"> Novo Contato </button>
+
     <div *ngIf="erroNoCarregamento">
         <h2> Deu erro :( </h2>
         <button (click)="CarregarContatos()"> Tentar novamente</button>

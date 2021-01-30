@@ -8,14 +8,6 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-  palavra = 'palavra';
-  corfavorita = 'verde';
-  titulo = 'Seja bem vindo!';
-
   constructor(){  }
-
-  eventoRecebido($event:any){
-    console.log('appComponente: evento recebido!', $event);
-  }
 
 }

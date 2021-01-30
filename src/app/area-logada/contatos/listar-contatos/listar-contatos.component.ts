@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { finalize, take } from 'rxjs/operators';
 
 import { Contato } from '../contatos.interface';
@@ -18,7 +19,9 @@ export class ListarContatosComponent implements OnInit {
 
   constructor(
     private contatosService: ContatosService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService,
+    ) { }
 
   ngOnInit() {
     this.CarregarContatos();
@@ -46,9 +49,25 @@ export class ListarContatosComponent implements OnInit {
     this.erroNoCarregamento = true;
     console.error(error);
   }
-  
+
   irParaDetalhes(idContato: string){
     this.router.navigate([`contatos/${idContato}`])
   }
 
+  deletarContato(idContato: string){
+    this.contatosService.deleteContato(idContato)
+    .subscribe(
+      _response => this.onSuccessDeletarContato(idContato),
+      _error => this.onErrorDeletarContato(),
+    );
+  }
+
+  onSuccessDeletarContato(idContato: string){
+    this.toastr.success('Sucesso!', 'Contato Deletado');
+    this.contatos = this.contatos.filter(contatos => contatos.id !== idContato);
+  }
+
+  onErrorDeletarContato(){
+    console.log('erro o deletar')
+  }
 }
